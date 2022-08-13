@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+	<link rel="stylesheet" media="screen" href="css/custom.css">
+    <link rel="stylesheet" media="screen" href="css/fonts.css">
+	<link rel="stylesheet" media="screen" href="css/prism.css">
+	<link rel="stylesheet" media="screen" href="css/socializer.css">
+	<link rel="stylesheet" media="screen" href="css/theme.min.css">
+	<link rel="stylesheet" type="text/css" href="style.min.css">
+    <link rel="stylesheet" href="css/stylish.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>  </head>
+</head>
+<body>
+<div class="usman"> 
+
+    <div class="main">
+        <div class="Tools">
+           <ul>
+              <li>
+                 <i class='bx bxs-brightness-half'></i>
+                 <p>BrightNess</p>
+              </li>
+              <li>
+                 <i class='bx bxs-brush' ></i>
+                 <p>Blur</p>
+              </li>
+              <li>
+                 <i class='bx bxs-collection' ></i>
+                 <p>GreyScale</p>
+              </li>
+              <li>
+                 <i class='bx bxs-color-fill' ></i>
+                 <p>Hue Rotate</p>
+              </li>
+              <li>
+                 <i class='bx bxs-magic-wand' ></i>
+                 <p>Saturation</p>
+              </li>
+              <li onclick="Download_btn()">
+                 <i class='bx bx-export' ></i>
+                 <p>Export</p>
+              </li>
+           </ul>
+        </div>
+        <div class="content">
+
+         <div class="clipmain sticky-top umer">
+
+            <section class="dark-panel inset">
+                <div class="flex">
+                    <input value="5% 20% 0 10%" class="inset-round" type="text">
+                </div>
+                <p>The <code>inset()</code> shape optionally allows values similar to <code>border-radius</code> for rounded edges. This new feature may be buggy in <span class="your-browser">your browser</span>.</p>
+            </section>
+            
+            <section class="dark-panel custom">
+                <button class="finish"></button>
+            </section>
+            
+            <div class="demo-container">
+                <section class="demo">
+                    <div id="box" class="box">
+                        <div class="shadowboard"></div>
+                        <div class="clipboard"></div>
+                        <div class="handles"></div>
+                    </div>
+                    <div class="custom-notice">
+                        <div><span class="touchy"></span> to add points
+                            <br>to custom polygon.</div>
+                    </div>
+      
+                    <figure class="gallery-cell" data-name="Bevel" data-type="polygon" data-coords="20,0 80,0 100,20 100,80 80,100 20,100 0,80 0,20"><div style="-webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" class="shape Bevel"></div><figcaption>Bevel</figcaption></figure>
+      
+                </section>
+            </div>
+        
+            <section class="clip-path" style="visibility: hidden;">
+                <div><p class="css-code code"><span class="webkit block show">-webkit-clip-path: <span class="functions"></span>;</span> <span class="unprefixed block show">clip-path: <span class="functions"></span>;</span></p></div>
+            </section>
+        </div>
+
+
+           <p id="logo">Photo Editor</p>
+           <div class="choose_image" style="display: none;">
+              <div class="upload_img_box" style="display: none;">
+                 <i class='bx bxs-image-add' ></i><br>
+                 <input type="file" name="selectedImage" id="selectedImage" accept="image/jpeg, image/png">
+                 <p id="hint">choose Image from folder</p>
+              </div>
+           </div>
+           <canvas id="image_canvas"></canvas>
+           <div class="image_holder" style="display: none;">
+              <button id="remove_img_btn" style="display: none;"><i class='bx bxs-message-square-x' ></i></button>
+              <img src="" alt="img" id="image" style="display: none;">
+           </div>
+           <div class="options">
+              <div class="option">
+                 <input type="range" max="200" min="0" value="100" id="brightness" class="slider">
+                 <p id="brightVal" class="show_value">100</p>
+              </div>
+              <div class="option">
+                 <input type="range" max="40" min="0" value="0" id="blur" class="slider">
+                 <p id="blurVal" class="show_value">0</p>
+              </div>
+              <div class="option">
+                 <input type="range" max="100" min="0" value="0" id="greyScale" class="slider">
+                 <p id="greyVal" class="show_value">0</p>
+              </div>
+              <div class="option">
+                 <input type="range" max="100" min="0" value="0" id="hue" class="slider">
+                 <p id="hueVal" class="show_value">0</p>
+              </div>
+              <div class="option">
+                 <input type="range" max="100" min="1" value="1" id="saturation" class="slider">
+                 <p id="saturationVal" class="show_value">1</p>
+              </div>
+           </div>
+           <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <div class="clipmain sticky-top">
+
+      <section class="dark-panel inset">
+          <div class="flex">
+              <input value="5% 20% 0 10%" class="inset-round" type="text">
+          </div>
+          <p>The <code>inset()</code> shape optionally allows values similar to <code>border-radius</code> for rounded edges. This new feature may be buggy in <span class="your-browser">your browser</span>.</p>
+      </section>
+      
+      <section class="dark-panel custom">
+          <button class="finish"></button>
+      </section>
+      
+      <div class="demo-container">
+          <section class="demo">
+              <div id="box" class="box">
+                  <div class="shadowboard"></div>
+                  <div class="clipboard"></div>
+                  <div class="handles"></div>
+              </div>
+              <div class="custom-notice">
+                  <div><span class="touchy"></span> to add points
+                      <br>to custom polygon.</div>
+              </div>
+
+              <figure class="gallery-cell" data-name="Bevel" data-type="polygon" data-coords="20,0 80,0 100,20 100,80 80,100 20,100 0,80 0,20"><div style="-webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)" class="shape Bevel"></div><figcaption>Bevel</figcaption></figure>
+
+          </section>
+      </div>
+  
+      <section class="clip-path" style="visibility: hidden;">
+          <div><p class="css-code code"><span class="webkit block show">-webkit-clip-path: <span class="functions"></span>;</span> <span class="unprefixed block show">clip-path: <span class="functions"></span>;</span></p></div>
+      </section>
+  </div> -->
+  
+
+
+  <!-- HIDDEN EXTRA TEXT USELESS -->
+  <div class="grid panel saya">
+      <h2 style="display: none;">Demo Background</h2>
+      <div class="backgrounds" style="display: none;"><img src="pics/tree.jpg"> <img src="pics/city.jpg"> <img src="pics/lake.jpg"> <img src="pics/north.jpg"></div>
+      <input placeholder="Custom URL..." id="custom_url" type="url" name="background" style="display: none;">
+
+
+      <div class="grid panel">
+        <h2 style="color: #FF7043;">Demo Size</h2>
+        <div class="flex">
+        <input id="demo_width" value="300" type="number">
+        <h2>&times;</h2>
+        <input id="demo_height" value="300" type="number">
+        </div>
+
+
+
+      <!-- WORKING OF BUTTON UPLOAD -->
+      <label for='upload_image' class="upload">Upload Image...</label>
+      <input type="file" id="upload_image">
+      
+
+      <!-- HIDDEN CLIP PATH -->
+      <style id="custom_background"></style>
+      <div class="shadowboard-toggle">
+          <h2 style="color: #FF7043;">Show outside clip-path</h2>
+          <div class="flex">
+          <input name="prefix" type="checkbox" id="shadowboard-toggle">
+          <label class="joined" for="shadowboard-toggle"></label>
+          </div>
+      </div>
+  </div>
+</div>  
+    <script src="js/clipboard.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/prism.js"></script>
+	<script src="js/theme.min.js"></script>
+	<script src="js/zepto.js"></script>
+<script src="draggabilly.min.js"></script>
+<script src="clip.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
